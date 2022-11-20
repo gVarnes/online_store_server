@@ -23,6 +23,8 @@ fastify.register(import("@fastify/multipart"), {
   onFile,
 });
 
+fastify.register(import("@fastify/cors"));
+
 //updates comming soon
 fastify.register(import("@fastify/swagger"), {
   swagger: {
@@ -69,7 +71,7 @@ fastify.register(require("@fastify/static"), {
 });
 
 fastify.post("/user/registration", userController.registration);
-fastify.get("/user/login", userController.login);
+fastify.post("/user/login", userController.login);
 
 fastify.register((instance, {}, done) => {
   instance.addHook("onRequest", userController.auth);

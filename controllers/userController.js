@@ -11,19 +11,19 @@ const generateJWT = (id, email, role) => {
 export const userController = {
   registration: async (request, reply) => {
     const { email, password, role } = request.body;
-
     const hashPassword = await hash(password, 5);
     const user = await User.create({
       email,
       password: hashPassword,
       role,
     });
+
     const basket = await Basket.create({ userId: user.id });
 
     return reply.status(201).send(user);
   },
   login: async (request, reply) => {
-    const { email, password, role } = request.query;
+    const { email, password } = request.body;
     const user = await User.findOne({
       where: {
         email,

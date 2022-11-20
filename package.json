@@ -21,6 +21,7 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "@fastify/cors": "^8.2.0",
     "@fastify/multipart": "^7.3.0",
     "@fastify/static": "^6.5.0",
     "@fastify/swagger": "^8.1.0",
@@ -29,7 +30,6 @@
     "fastify": "^4.9.2",
     "fastify-cli": "^5.5.1",
     "fastify-cookie": "^5.7.0",
-    "fastify-cors": "^6.1.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.8.0",
     "sequelize": "^6.25.3",
