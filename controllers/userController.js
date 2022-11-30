@@ -35,7 +35,9 @@ export const userController = {
       return reply.status(200).send({ token });
     }
 
-    return reply.status(403).send({ message: "Access denied" });
+    return reply
+      .status(404)
+      .send({ message: "User with this email does not found" });
   },
   auth: async (request, reply) => {
     const { authorization } = request.headers;
@@ -59,6 +61,6 @@ export const userController = {
       return;
     }
 
-    return reply.status(401).send({ message: "Unauthorized" });
+    // return reply.status(401).send({ message: "Unauthorized" });
   },
 };

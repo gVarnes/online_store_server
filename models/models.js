@@ -3,9 +3,23 @@ import sequelize from "../db";
 
 export const User = sequelize.define("user", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  email: { type: DataTypes.STRING, unique: true, allowNull: false },
-  password: { type: DataTypes.STRING, allowNull: false },
-  role: { type: DataTypes.STRING, defaultValue: "USER" },
+  email: {
+    type: DataTypes.STRING,
+    unique: true,
+    allowNull: false,
+    validate: { isEmail: true },
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      len: [6],
+    },
+  },
+  role: {
+    type: DataTypes.STRING,
+    defaultValue: "USER",
+  },
 });
 
 export const Basket = sequelize.define("basket", {

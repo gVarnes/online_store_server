@@ -34,9 +34,9 @@ export const deviceController = {
     });
 
     //if deviceInfo is not false, we create a deviceinfo
-    if (info) {
+    if (info.value) {
       //we get it as a string so it is needed to be parsed
-      info = JSON.parse(info);
+      info = JSON.parse(info.value);
 
       //mabye it should work without async/await
       info.forEach(async (item) => {

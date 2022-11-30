@@ -72,16 +72,16 @@ fastify.register(require("@fastify/static"), {
 
 fastify.post("/user/registration", userController.registration);
 fastify.post("/user/login", userController.login);
+fastify.get("/device", deviceController.getAll);
+fastify.get("/device/:id", deviceController.getOne);
+fastify.get("/type", typeConroller.getAll);
+fastify.get("/brand", brandConroller.getAll);
 
 fastify.register((instance, {}, done) => {
   instance.addHook("onRequest", userController.auth);
   instance.post("/type", typeConroller.create);
-  instance.get("/type", typeConroller.getAll);
   instance.post("/brand", brandConroller.create);
-  instance.get("/brand", brandConroller.getAll);
   instance.post("/device", deviceController.create);
-  instance.get("/device", deviceController.getAll);
-  instance.get("/device/:id", deviceController.getOne);
   instance.post("/rating", ratingController.addRating);
   instance.post("/basket", basketController.addDevice);
   instance.get("/basket", basketController.getDevices);
