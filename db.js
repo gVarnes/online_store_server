@@ -1,7 +1,18 @@
 import { Sequelize } from "sequelize";
+import * as dotenv from "dotenv";
 
-const sequelize = new Sequelize(
-  "postgres://postgres:gvarnes2304@localhost:5432/online_store"
-);
+dotenv.config();
+
+let sequelize;
+if (process.env.NODE_ENV) {
+  sequelize = new Sequelize(process.env.DATABASE_URL);
+} else {
+  sequelize = new Sequelize(
+    "postgres://postgres:gvarnes2304@localhost/online_store"
+  );
+}
+// const sequelize = new Sequelize(
+//   "postgres://postgres:gvarnes2304@localhost/online_store"
+// );
 
 export default sequelize;
