@@ -14,6 +14,9 @@ import { onFile } from "./controllers/deviceController";
 
 dotenv.config();
 
+const REMOVE_HOST = process.env.NODE_ENV ? "0.0.0.0" : "127.0.0.1";
+const port = process.env.PORT || 3001;
+
 const fastify = Fastify({
   logger: true,
 });
@@ -93,7 +96,7 @@ const start = async () => {
   try {
     await sequelize.authenticate();
     await sequelize.sync();
-    await fastify.listen({ port: 3001 });
+    await fastify.listen({ port, host: REMOVE_HOST });
   } catch (error) {
     console.log(error);
   }

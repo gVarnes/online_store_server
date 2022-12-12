@@ -2,7 +2,7 @@ export const config = {
   development: {
     username: "postgres",
     password: "gvarnes2304",
-    database: "postgres",
+    database: "online_store",
     host: "localhost",
     port: 5432,
     dialect: "postgres",
@@ -36,14 +36,11 @@ export const config = {
   //     },
   //   },
   production: {
-    username: "kwyfkode",
-    password: "TnhmMWw5viaGaaLTonTwYEve10OJVf1x",
-    database: "kwyfkode",
-    host: "mouse.db.elephantsql.com",
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    host: process.env.DB_HOST,
     //  port: process.env.PROD_DB_PORT,
     dialect: "postgres",
-    //  dialectOptions: {
-    //    bigNumberStrings: true,
-    //  },
   },
 };
